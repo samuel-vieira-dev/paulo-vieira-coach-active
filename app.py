@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS
 import requests
 
@@ -15,7 +15,7 @@ def submit_form():
         'Api-Token': API_TOKEN,
         'Content-Type': 'application/json'
     }
-    
+
     contact_data = {
         'contact': {
             'email': data.get('email'),
@@ -25,11 +25,11 @@ def submit_form():
     }
 
     response = requests.post(ACTIVECAMPAIGN_URL, headers=headers, json=contact_data)
-    
+
     if response.status_code == 200 or response.status_code == 201:
-        return jsonify({"message": "Success!"}), 200
+        return redirect('https://focaleducacao.com/obrigado-dominando-mercado', code=302)
     else:
-        return jsonify({"error": "Failed to submit data to ActiveCampaign"}), 400
+        return redirect('https://focaleducacao.com/obrigado-dominando-mercado', code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)
