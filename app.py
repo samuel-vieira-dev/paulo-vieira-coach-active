@@ -10,7 +10,7 @@ API_TOKEN = "d364730c47f04bdd8a644e1be3b8f93acb302690c61d2793ae3b03212bb1aedbb28
 
 @app.route('/save-lead', methods=['POST'])
 def submit_form():
-    data = request.json
+    data = request.form
     headers = {
         'Api-Token': API_TOKEN,
         'Content-Type': 'application/json'
