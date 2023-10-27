@@ -3,10 +3,10 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-ACTIVECAMPAIGN_URL = "https://focaleducacao.api-us1.com/api/3/contact/sync"
-API_TOKEN = "d364730c47f04bdd8a644e1be3b8f93acb302690c61d2793ae3b03212bb1aedbb2840101"
+ACTIVECAMPAIGN_URL = "https://focaleducacao.api-us1.com/api/7/contact/sync"
+API_TOKEN = "64c44ed8a7b709307ca8fa039affc5d659e275e55cde3c03ec2df93d45a63269cfea1c52"
 
 @app.route('/save-lead', methods=['POST'])
 def submit_form():
@@ -19,7 +19,7 @@ def submit_form():
     contact_data = {
         'contact': {
             'email': data.get('email'),
-            'nome': data.get('nome'),
+            'name': data.get('name'),
             'telefone': data.get('telefone')
         }
     }
@@ -27,9 +27,9 @@ def submit_form():
     response = requests.post(ACTIVECAMPAIGN_URL, headers=headers, json=contact_data)
 
     if response.status_code == 200 or response.status_code == 201:
-        return redirect('https://focaleducacao.com/obrigado-dominando-mercado', code=302)
+        return redirect('https://focaleducacao.com.br/obrigado-captura', code=302)
     else:
-        return redirect('https://focaleducacao.com/obrigado-dominando-mercado', code=302)
+        return redirect('https://focaleducacao.com.br/erro-captura', code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)
