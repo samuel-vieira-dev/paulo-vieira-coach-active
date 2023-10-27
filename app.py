@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 
@@ -35,7 +35,7 @@ def submit_form():
     response = requests.post(f"{ACTIVECAMPAIGN_BASE_URL}/contact/sync", headers=headers, json=contact_data)
     if response.status_code not in [200, 201]:
         print("Erro ao sincronizar contato:", response.text)
-        return redirect('https://focaleducacao.com.br/erro-captura', code=301)
+        return jsonify({"message": "Erro ao salvar lead"}), 400
 
     contact_id = response.json().get('contact').get('id')
 
@@ -52,9 +52,9 @@ def submit_form():
     print(response.text)
 
     if response.status_code in [200, 201]:
-        return redirect('https://focaleducacao.com.br/obrigado-captura', code=302)
+        return jsonify({"message": "Lead salvo com sucesso"}), 200
     else:
-        return redirect('https://focaleducacao.com.br/obrigado-captura', code=301)
+        return jsonify({"message": "Erro ao salvar lead"}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
