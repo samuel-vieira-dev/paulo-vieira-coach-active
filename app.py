@@ -54,7 +54,7 @@ def submit_form():
     if response.status_code in [200, 201]:
         return redirect('https://focaleducacao.com.br/obrigado-captura', code=302)
     else:
-        return redirect('https://focaleducacao.com.br/erro-captura', code=301)
+        return redirect('https://focaleducacao.com.br/obrigado-captura', code=301)
 
 if __name__ == '__main__':
     app.run(debug=True)
