@@ -42,7 +42,7 @@ def submit_form():
     # Em seguida, adicione o contato à lista com ID 7
     list_data = {
         'contactList': {
-            'list': 7,
+            'list': 5,
             'contact': contact_id,
             'status': 1  # 1 para adicionar à lista
         }
