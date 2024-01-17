@@ -18,15 +18,15 @@ def submit_form():
 
     contact_data = {
         'contact': {
-            'firstName': data.get('name'),
+            'firstName': data.get('primeiroNome'),
             'email': data.get('email'),
             'phone': data.get('telefone'),
             'fieldValues': [
-                {'field': '7', 'value': data.get('utm_source')},
-                {'field': '8', 'value': data.get('utm_content')},
-                {'field': '9', 'value': data.get('utm_medium')},
-                {'field': '10', 'value': data.get('utm_term')},
-                {'field': '11', 'value': data.get('utm_campaign')}
+                {'field': 'AV0124_UTM_SOURCE', 'value': data.get('utm_source')},
+                {'field': 'AV0124_UTM_MEDIUM', 'value': data.get('utm_medium')},
+                {'field': 'AV0124_UTM_CAMPAIGN', 'value': data.get('utm_campaign')},
+                {'field': 'AV0124_UTM_CONTENT', 'value': data.get('utm_content')},
+                {'field': 'AV0124_UTM_TERM', 'value': data.get('utm_term')}
             ]
         }
     }
