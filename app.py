@@ -28,11 +28,13 @@ def submit_form():
             'email': data.get('email'),
             'phone': data.get('telefone'),
             'fieldValues': [
-                {'field': 'AV0124_UTM_SOURCE', 'value': data.get('AV0124_UTM_SOURCE')},
-                {'field': 'AV0124_UTM_MEDIUM', 'value': data.get('AV0124_UTM_MEDIUM')},
-                {'field': 'AV0124_UTM_CAMPAIGN', 'value': data.get('AV0124_UTM_CAMPAIGN')},
-                {'field': 'AV0124_UTM_CONTENT', 'value': data.get('AV0124_UTM_CONTENT')},
-                {'field': 'AV0124_UTM_TERM', 'value': data.get('AV0124_UTM_TERM')}
+                {'field': '1', 'value': data.get('AV0124_UTM_SOURCE')},
+                {'field': '3', 'value': data.get('AV0124_UTM_MEDIUM')},
+                {'field': '4', 'value': data.get('AV0124_UTM_CAMPAIGN')},
+                {'field': '5', 'value': data.get('AV0124_UTM_CONTENT')},
+                {'field': '6', 'value': data.get('AV0124_UTM_TERM')}
+                # Se você também está capturando e enviando data lead, você adicionaria aqui
+                # {'field': '7', 'value': data.get('data_lead')}
             ]
         }
     }
